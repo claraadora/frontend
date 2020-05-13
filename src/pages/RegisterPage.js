@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const RegisterPage = () => {
   const [email, setEmail] = useState("");
@@ -36,8 +37,11 @@ export const RegisterPage = () => {
           placeholder="Enter new password"
         />
         <br />
+        <br></br>
         <input type="submit" value="Submit"></input>
       </form>
+      <br></br>
+      Already have an account? <Link to="/login">Login here</Link>
     </div>
   );
 };

@@ -9,6 +9,7 @@ import "./App.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const [loggedUser, setLoggedUser] = useState("guest");
 
   //states
@@ -17,16 +18,7 @@ function App() {
       <div className="App">
         <Nav loggedIn={isLoggedIn} loggedUser={loggedUser} />
         <Switch>
-          <Route
-            exact
-            path="/login"
-            component={
-              <Nav
-                setIsLoggedIn={setIsLoggedIn}
-                setLoggedUser={setLoggedUser}
-              />
-            }
-          />
+          <Route exact path="/login" component={LoginPage} />
           <Route exact path="/register" component={RegisterPage} />
           <Route exact path="/" component={LandingPage} />
         </Switch>

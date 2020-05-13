@@ -1,24 +1,26 @@
-//action types
-export const LOG_IN = "LOG_IN";
-export const LOG_OUT = "LOG_OUT";
-export const REGISTER = "REGISTER";
-
-export function logIn(user) {
+export const logIn = (user) => {
   return {
-    tyoe: LOG_IN,
+    tyoe: "LOG_IN",
     user,
   };
-}
+};
 
-export function logOut() {
+export const logOut = () => {
   return {
-    type: LOG_OUT,
+    type: "LOG_OUT",
   };
-}
+};
 
-export function register(user) {
+export const register = (user) => {
   return {
-    tyoe: LOG_IN,
+    tyoe: "REGISTER",
     user,
   };
-}
+};
+
+export const selectYear = (year) => {
+  return {
+    type: "SELECT_YEAR",
+    year,
+  };
+};

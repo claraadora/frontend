@@ -1,17 +1,18 @@
 import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const submit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
   };
 
   return (
     <div>
       <h1>Log in</h1>
-      <form onSubmit={submit}>
+      <form onSubmit={handleSubmit}>
         <label for="email">
           <p>Email</p>
         </label>
@@ -35,7 +36,11 @@ export const LoginPage = () => {
           placeholder="Enter password"
         />
       </form>
+      <br></br>
       <button type="submit">Submit</button>
+      <br></br>
+      <br></br>
+      Don't have an account? <Link to="/register">Register here</Link>
     </div>
   );
 };

@@ -1,10 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
+import { selectYear } from "../actions/userActions";
 
 const MovieSelection = ({ year, setYear }) => {
   return (
     <div>
       <form>
-        <lable for="inputYear"> Year: </lable>
+        <label for="inputYear"> Year: </label>
         <input
           type="text"
           value={year}
