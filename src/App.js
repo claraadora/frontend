@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import Nav from "./components/Nav";
-import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const [loggedUser, setLoggedUser] = useState("guest");
-
-  //states
   return (
     <Router>
       <div className="App">
-        <Nav loggedIn={isLoggedIn} loggedUser={loggedUser} />
+        <Nav />
         <Switch>
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/register" component={RegisterPage} />
@@ -28,3 +23,14 @@ function App() {
 }
 
 export default App;
+
+// const [user, setUser] = useState(currentUser);
+
+// const dispatch = useDispatch();
+
+// useEffect(() => {
+//   dispatch();
+// }, [user]);
+
+// useEffect(() => {}, [currentUser]);
+//states

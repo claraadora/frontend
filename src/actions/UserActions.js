@@ -24,3 +24,10 @@ export const selectYear = (year) => {
     year,
   };
 };
+
+export const allActions = {
+  logIn,
+  logOut,
+  register,
+  selectYear,
+};

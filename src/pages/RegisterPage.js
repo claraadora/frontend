@@ -14,7 +14,7 @@ export const RegisterPage = () => {
     <div>
       <h1>Register</h1>
       <form onSubmit={handleSubmit}>
-        <label for="email">
+        <label htmlFor="email">
           <p>Email</p>
         </label>
         <input
@@ -25,7 +25,7 @@ export const RegisterPage = () => {
           value={email}
           placeholder="Enter email"
         />
-        <label for="password">
+        <label htmlFor="password">
           <p>Password</p>
         </label>
         <input
