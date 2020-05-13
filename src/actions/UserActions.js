@@ -1,14 +1,12 @@
-export const UserActions = {
-  LOG_IN: "LOG_IN",
-  LOG_OUT: "LOG_OUT",
-  REGISTER: "REGISTER",
-};
+//action types
+export const LOG_IN = "LOG_IN";
+export const LOG_OUT = "LOG_OUT";
+export const REGISTER = "REGISTER";
 
-export function logIn(email, password) {
+export function logIn(user) {
   return {
     tyoe: LOG_IN,
-    email: email,
-    password: password,
+    user,
   };
 }
 
@@ -18,10 +16,9 @@ export function logOut() {
   };
 }
 
-export function register(email, password) {
+export function register(user) {
   return {
     tyoe: LOG_IN,
-    email: email,
-    password: password,
+    user,
   };
 }
