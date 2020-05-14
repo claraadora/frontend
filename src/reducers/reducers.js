@@ -57,6 +57,13 @@ export function registeredUser(state = initialRegisterState, action) {
         ...state,
         registeringUser: action.user,
       };
+    case userConstants.REGISTER:
+      return {
+        ...state,
+        registeringUser: action.user,
+      };
+    default:
+      return state;
   }
 }
 

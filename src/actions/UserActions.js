@@ -1,33 +1,41 @@
+import { userConstants } from "../constants/userConstants";
+
 export const login = (user) => {
   return {
-    type: userActions.LOGIN,
+    type: userConstants.LOGIN,
     user,
   };
 };
 
 export const logout = () => {
   return {
-    type: userActions.LOGOUT,
+    type: userConstants.LOGOUT,
+  };
+};
+
+export const register = () => {
+  return {
+    type: userConstants.REGISTER,
   };
 };
 
 export const registerRequest = (user) => {
   return {
-    type: userActions.REGISTER_REQUEST,
+    type: userConstants.REGISTER_REQUEST,
     user,
   };
 };
 
 export const registerSuccess = (user) => {
   return {
-    type: userActions.REGISTER_SUCCESS,
+    type: userConstants.REGISTER_SUCCESS,
     user,
   };
 };
 
 export const registerFail = (user) => {
   return {
-    type: userActions.REGISTER_FAIL,
+    type: userConstants.REGISTER_FAIL,
     user,
   };
 };
@@ -45,5 +53,6 @@ export const allActions = {
   registerRequest,
   registerSuccess,
   registerFail,
+  register,
   selectYear,
 };

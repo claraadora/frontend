@@ -8,7 +8,15 @@ export const RegisterPage = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
+    confirmedPassword: "",
   });
+
+  const validate = (values) => {
+    if (values.password == values.confirmedPassword) {
+      return true;
+    }
+    return false;
+  };
 
   //Redux
   const dispatch = useDispatch();
@@ -16,9 +24,13 @@ export const RegisterPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(user);
-    updateStore(user);
-    alert(`registered successfully!`);
+    if (validate(user)) {
+      console.log(user);
+      updateStore(user);
+      alert(`registered successfully!`);
+    } else {
+      alert("Passwords do not match!");
+    }
   };
 
   const onChange = (e) => {
@@ -54,9 +66,9 @@ export const RegisterPage = () => {
         </label>
         <input
           type="password"
-          name="confirm-password"
+          name="confirmedPassword"
           onChange={onChange}
-          value={user.password}
+          value={user.confirmedPassword}
           placeholder="Enter password"
         />
         <br />
