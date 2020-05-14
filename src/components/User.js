@@ -1,8 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-export const User = ({ user }) => {
-  console.log(user.email);
+export const User = () => {
+  const user = useSelector((state) => state.loggedUser);
+  console.log(user);
   return <h5>Welcome, {user.email} </h5>;
 };
-
-export default User;

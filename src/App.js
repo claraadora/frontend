@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
@@ -23,14 +22,3 @@ function App() {
 }
 
 export default App;
-
-// const [user, setUser] = useState(currentUser);
-
-// const dispatch = useDispatch();
-
-// useEffect(() => {
-//   dispatch();
-// }, [user]);
-
-// useEffect(() => {}, [currentUser]);
-//states

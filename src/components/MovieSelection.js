@@ -1,6 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
-import { selectYear } from "../actions/userActions";
 
 const MovieSelection = ({ year, setYear }) => {
   return (

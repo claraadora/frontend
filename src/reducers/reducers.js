@@ -1,4 +1,3 @@
-import React from "react";
 import { combineReducers } from "redux";
 
 const initialUserState = {
@@ -15,13 +14,13 @@ const initialYearState = {
 
 export function loggedUser(state = initialUserState, action) {
   switch (action.type) {
-    case "LOG_IN":
+    case "LOGIN":
       return {
         ...state,
         isLoggedIn: true,
         loggedUser: action.user,
       };
-    case "LOG_OUT":
+    case "LOGOUT":
       return {
         ...state,
         isLoggedIn: false,

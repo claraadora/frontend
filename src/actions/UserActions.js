@@ -1,19 +1,19 @@
-export const logIn = (user) => {
+export const login = (user) => {
   return {
-    tyoe: "LOG_IN",
+    type: "LOGIN",
     user,
   };
 };
 
-export const logOut = () => {
+export const logout = () => {
   return {
-    type: "LOG_OUT",
+    type: "LOGOUT",
   };
 };
 
 export const register = (user) => {
   return {
-    tyoe: "REGISTER",
+    type: "REGISTER",
     user,
   };
 };
@@ -26,8 +26,8 @@ export const selectYear = (year) => {
 };
 
 export const allActions = {
-  logIn,
-  logOut,
+  login,
+  logout,
   register,
   selectYear,
 };

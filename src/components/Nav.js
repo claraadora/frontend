@@ -2,13 +2,8 @@ import React from "react";
 import "./Nav.css";
 import { Link } from "react-router-dom";
 import { User } from "./User";
-import { useSelector, useDispatch } from "react-redux";
 
 export const Nav = () => {
-  const data = useSelector((state) => state.loggedUser);
-  const currentUser = data.loggedUser;
-
-  console.log(currentUser);
   return (
     <nav>
       <ul>
@@ -24,7 +19,7 @@ export const Nav = () => {
         <Link to="/">
           <li>Home</li>
         </Link>
-        <User user={currentUser} />
+        <User />
       </ul>
     </nav>
   );
