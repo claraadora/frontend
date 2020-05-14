@@ -11,23 +11,26 @@ const fetchData = async (year) => {
 };
 
 const MovieTable = () => {
-  const year = useSelector((state) => state.selectedYear.year);
+  const year = useSelector((state) => {
+    console.log(state);
+    return state.selectedYear.year;
+  });
   const [movieDetails, setMovieDetails] = useState([]);
 
   useEffect(() => {
     const updateMovieDetails = async () => {
       const json = await fetchData(year);
       setMovieDetails(json);
+      console.log("year is " + year);
+      console.log(json);
     };
     updateMovieDetails();
   }, [year]);
 
-  console.log(year);
-
   return (
     <table>
       <thead>
-        <tr key="category">
+        <tr>
           <th>Title</th>
           <th>Release Date</th>
           <th>Rating</th>

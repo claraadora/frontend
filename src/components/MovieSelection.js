@@ -3,14 +3,18 @@ import { useDispatch } from "react-redux";
 import { selectYear } from "../actions/userActions";
 
 const MovieSelection = () => {
+  //States
   const [year, setYear] = useState("2001");
 
   //Redux
   const dispatch = useDispatch();
-  const updateStore = (year) => dispatch(selectYear(year));
+  const updateStore = (year) => {
+    return dispatch(selectYear(year));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(year);
     updateStore(year);
   };
 

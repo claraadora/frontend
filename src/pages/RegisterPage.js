@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { register } from "../actions/userActions";
+import { Redirect } from "react-router-dom";
 
 export const RegisterPage = () => {
   //States
@@ -10,9 +11,10 @@ export const RegisterPage = () => {
     password: "",
     confirmedPassword: "",
   });
+  const redirectTo = useSelector((state) => state.redirectTo);
 
   const validate = (values) => {
-    if (values.password == values.confirmedPassword) {
+    if (values.password === values.confirmedPassword) {
       return true;
     }
     return false;
@@ -20,7 +22,8 @@ export const RegisterPage = () => {
 
   //Redux
   const dispatch = useDispatch();
-  const updateStore = (user) => dispatch(register(user));
+  const updateUser = (user) => dispatch(register(user));
+  const updateRedirect = (link) => dispatch(redirectTo(link));
 
   //clear fields
   const clearErrors = () => {
@@ -44,18 +47,22 @@ export const RegisterPage = () => {
   */
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(redirectTo);
+
     if (validate(user)) {
       console.log(user);
-      updateStore(user);
+      updateUser(user);
+      updateRedirect("/login");
       alert(`registered successfully!`);
       clearFields();
-      //redirect
+      return <Redirect to="/login" />;
     } else {
       alert("Passwords do not match!");
       clearErrors();
     }
   };
 
+  //set changes into local states
   const onChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };

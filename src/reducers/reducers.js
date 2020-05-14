@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import { userConstants } from "../constants/userConstants";
+import { pageConstants } from "../constants/pageConstants";
 
 const initialLoginState = {
   isLoggedIn: false,
@@ -10,7 +11,7 @@ const initialLoginState = {
 };
 
 const initialYearState = {
-  year: 2020,
+  year: "",
 };
 
 const initialRegisterState = {
@@ -69,9 +70,20 @@ export function registeredUser(state = initialRegisterState, action) {
 
 export function selectedYear(state = initialYearState, action) {
   switch (action.type) {
-    case "SELECT_YEAR":
+    case userConstants.SELECT_YEAR:
       return {
         year: action.year,
+      };
+    default:
+      return state;
+  }
+}
+
+export function redirect(state = {}, action) {
+  switch (action.type) {
+    case pageConstants.REDIRECT_TO:
+      return {
+        redirectTo: action.link,
       };
     default:
       return state;
@@ -82,4 +94,5 @@ export const rootReducer = combineReducers({
   loggedUser,
   selectedYear,
   registeredUser,
+  redirect,
 });
