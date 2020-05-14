@@ -49,6 +49,16 @@ export const RegisterPage = () => {
           value={user.password}
           placeholder="Enter new password"
         />
+        <label htmlFor="password">
+          <p>Confirm Password</p>
+        </label>
+        <input
+          type="password"
+          name="confirm-password"
+          onChange={onChange}
+          value={user.password}
+          placeholder="Enter password"
+        />
         <br />
         <br />
         <input type="submit" value="Submit"></input>
