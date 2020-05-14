@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { login } from "../actions/userActions";
 
 export const LoginPage = () => {
@@ -17,6 +18,7 @@ export const LoginPage = () => {
     e.preventDefault();
     console.log(user);
     updateStore(user);
+    alert(`logged in successfully!`);
   };
 
   const onChange = (e) => {
@@ -47,8 +49,12 @@ export const LoginPage = () => {
           value={user.password}
           placeholder="Enter password"
         />
+        <br />
+        <br />
         <input type="submit" value="Submit"></input>
       </form>
+      <br></br>
+      Don't have an account? <Link to="/register">Register here</Link>
     </div>
   );
 };
