@@ -22,14 +22,37 @@ export const RegisterPage = () => {
   const dispatch = useDispatch();
   const updateStore = (user) => dispatch(register(user));
 
+  //clear fields
+  const clearErrors = () => {
+    setUser({
+      email: user.email,
+      password: "",
+      confirmedPassword: "",
+    });
+  };
+
+  const clearFields = () => {
+    setUser({
+      email: "",
+      password: "",
+      confirmedPassword: "",
+    });
+  };
+
+  /*if valid, redirect to login
+    if invalid, clear fields
+  */
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate(user)) {
       console.log(user);
       updateStore(user);
       alert(`registered successfully!`);
+      clearFields();
+      //redirect
     } else {
       alert("Passwords do not match!");
+      clearErrors();
     }
   };
 
