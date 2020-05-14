@@ -50,7 +50,7 @@ export const RegisterPage = () => {
           placeholder="Enter new password"
         />
         <br />
-        <br></br>
+        <br />
         <input type="submit" value="Submit"></input>
       </form>
       <br></br>

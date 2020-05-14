@@ -1,16 +1,34 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { selectYear } from "../actions/userActions";
 
-const MovieSelection = ({ year, setYear }) => {
+const MovieSelection = () => {
+  const [year, setYear] = useState("2001");
+
+  //Redux
+  const dispatch = useDispatch();
+  const updateStore = (year) => dispatch(selectYear(year));
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateStore(year);
+  };
+
+  const onChange = (e) => {
+    setYear(e.target.value);
+  };
   return (
     <div>
-      <form>
-        <label for="inputYear"> Year: </label>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="inputYear"> Year: </label>
         <input
           type="text"
+          name="year"
           value={year}
-          onChange={(event) => setYear(event.target.value)}
+          onChange={onChange}
           id="inputYear"
         />
+        <input type="submit" value="Submit"></input>
       </form>
     </div>
   );
