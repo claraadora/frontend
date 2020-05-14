@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
+import { userConstants } from "../constants/userConstants";
 
-const initialUserState = {
+const initialLoginState = {
   isLoggedIn: false,
   loggedUser: {
     email: "guest@gmail.com",
@@ -12,21 +13,23 @@ const initialYearState = {
   year: 2020,
 };
 
-export function loggedUser(state = initialUserState, action) {
+const initialRegisterState = {
+  registeringUser: {
+    email: "",
+    password: "",
+    confirmedPassword: "",
+  },
+};
+
+export function loggedUser(state = initialLoginState, action) {
   switch (action.type) {
-    case "LOGIN":
+    case userConstants.LOGIN:
       return {
         ...state,
         isLoggedIn: true,
         loggedUser: action.user,
       };
-    case "LOGOUT":
-      return {
-        ...state,
-        isLoggedIn: false,
-        loggedUser: {},
-      };
-    case "REGISTER":
+    case userConstants.LOGOUT:
       return {
         ...state,
         isLoggedIn: false,
@@ -34,6 +37,26 @@ export function loggedUser(state = initialUserState, action) {
       };
     default:
       return state;
+  }
+}
+
+export function registeredUser(state = initialRegisterState, action) {
+  switch (action.type) {
+    case userConstants.REGISTER_REQUEST:
+      return {
+        ...state,
+        registeringUser: action.user,
+      };
+    case userConstants.REGISTER_FAIL:
+      return {
+        ...state,
+        registeringUser: {},
+      };
+    case userConstants.REGISTER_SUCCESS:
+      return {
+        ...state,
+        registeringUser: action.user,
+      };
   }
 }
 
@@ -51,4 +74,5 @@ export function selectedYear(state = initialYearState, action) {
 export const rootReducer = combineReducers({
   loggedUser,
   selectedYear,
+  registeredUser,
 });

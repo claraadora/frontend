@@ -1,19 +1,33 @@
 export const login = (user) => {
   return {
-    type: "LOGIN",
+    type: userActions.LOGIN,
     user,
   };
 };
 
 export const logout = () => {
   return {
-    type: "LOGOUT",
+    type: userActions.LOGOUT,
   };
 };
 
-export const register = (user) => {
+export const registerRequest = (user) => {
   return {
-    type: "REGISTER",
+    type: userActions.REGISTER_REQUEST,
+    user,
+  };
+};
+
+export const registerSuccess = (user) => {
+  return {
+    type: userActions.REGISTER_SUCCESS,
+    user,
+  };
+};
+
+export const registerFail = (user) => {
+  return {
+    type: userActions.REGISTER_FAIL,
     user,
   };
 };
@@ -28,6 +42,8 @@ export const selectYear = (year) => {
 export const allActions = {
   login,
   logout,
-  register,
+  registerRequest,
+  registerSuccess,
+  registerFail,
   selectYear,
 };
