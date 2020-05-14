@@ -13,6 +13,7 @@ export const LoginPage = () => {
   //Redux
   const dispatch = useDispatch();
   const updateStore = (user) => dispatch(login(user));
+  console.log("hello");
 
   const handleSubmit = (e) => {
     e.preventDefault();
