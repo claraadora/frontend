@@ -31,11 +31,7 @@ export function loggedUser(state = initialLoginState, action) {
         loggedUser: action.user,
       };
     case userConstants.LOGOUT:
-      return {
-        ...state,
-        isLoggedIn: false,
-        loggedUser: {},
-      };
+      return initialLoginState;
     default:
       return state;
   }
