@@ -94,6 +94,8 @@ export function json(state = [], action) {
   switch (action.type) {
     case pageConstants.UPDATE_TABLE:
       return {};
+    default:
+      return state;
   }
 }
 

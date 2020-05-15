@@ -3,9 +3,7 @@ import { useDispatch } from "react-redux";
 import { selectYear } from "../actions/userActions";
 
 const MovieSelection = () => {
-  //States
-  c;
-  const [year, setYear] = useState("2001");
+  const [year, setYear] = useState("");
 
   //Redux
   const dispatch = useDispatch();

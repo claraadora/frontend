@@ -8,5 +8,5 @@ export const userConstants = {
   REGISTER: "REGISTER",
   LOGIN: "LOGIN",
 
-  SET_YEAR: "SET_YEAR",
+  SELECT_YEAR: "SELECT_YEAR",
 };
