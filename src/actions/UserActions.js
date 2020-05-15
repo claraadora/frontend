@@ -42,7 +42,7 @@ export const registerFail = (user) => {
 
 export const selectYear = (year) => {
   return {
-    type: "SELECT_YEAR",
+    type: userConstants.SELECT_YEAR,
     year,
   };
 };

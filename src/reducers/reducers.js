@@ -90,6 +90,13 @@ export function redirect(state = {}, action) {
   }
 }
 
+export function json(state = [], action) {
+  switch (action.type) {
+    case pageConstants.UPDATE_TABLE:
+      return {};
+  }
+}
+
 export const rootReducer = combineReducers({
   loggedUser,
   selectedYear,

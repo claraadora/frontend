@@ -1,32 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import "./MovieTable.css";
 
-const fetchData = async (year) => {
-  const res = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=3d11b524210f982d818a201741cb8205&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=${year}`
-  );
-  const json = await res.json();
-  return json.results;
-};
-
-const MovieTable = () => {
-  const year = useSelector((state) => {
-    console.log(state);
-    return state.selectedYear.year;
-  });
-  const [movieDetails, setMovieDetails] = useState([]);
-
-  useEffect(() => {
-    const updateMovieDetails = async () => {
-      const json = await fetchData(year);
-      setMovieDetails(json);
-      console.log("year is " + year);
-      console.log(json);
-    };
-    updateMovieDetails();
-  }, [year]);
-
+const MovieTable = ({ movieDetails }) => {
   return (
     <table>
       <thead>

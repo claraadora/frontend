@@ -6,3 +6,10 @@ export const redirectTo = (link) => {
     link,
   };
 };
+
+export const updateTable = (json) => {
+  return {
+    type: pageConstants.UPDATE_TABLE,
+    json,
+  };
+};

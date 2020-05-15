@@ -4,6 +4,7 @@ import { selectYear } from "../actions/userActions";
 
 const MovieSelection = () => {
   //States
+  c;
   const [year, setYear] = useState("2001");
 
   //Redux
