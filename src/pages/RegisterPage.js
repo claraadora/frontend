@@ -12,10 +12,9 @@ export const RegisterPage = () => {
     password: "",
     confirmedPassword: "",
   });
-
   const [redirectLink, setRedirectLink] = useState("");
-  // const redirectLink = useSelector((state) => state.redirectTo);
 
+  //Validate the form if the password matches the confirmed password
   const validate = (values) => {
     if (values.password === values.confirmedPassword) {
       return true;
@@ -23,12 +22,12 @@ export const RegisterPage = () => {
     return false;
   };
 
-  //Redux
+  //Update store upon registration and redirection
   const dispatch = useDispatch();
   const updateUser = (user) => dispatch(register(user));
   const updateRedirect = (link) => dispatch(redirectTo(link));
 
-  //clear fields
+  //Clear error fields (when submitting unmatched passwords)
   const clearErrors = () => {
     setUser({
       email: user.email,
@@ -37,15 +36,7 @@ export const RegisterPage = () => {
     });
   };
 
-  const clearFields = () => {
-    setUser({
-      email: "",
-      password: "",
-      confirmedPassword: "",
-    });
-  };
-
-  /*if valid, redirect to login
+  /*Iff valid, redirect to login
     if invalid, clear fields
   */
   const handleSubmit = (e) => {
@@ -53,11 +44,9 @@ export const RegisterPage = () => {
     console.log(redirectTo);
 
     if (validate(user)) {
-      console.log(user);
       updateUser(user);
       updateRedirect("/login");
       alert(`registered successfully!`);
-      clearFields();
       setRedirectLink("/login");
     } else {
       alert("Passwords do not match!");
@@ -65,14 +54,16 @@ export const RegisterPage = () => {
     }
   };
 
-  //set changes into local states
+  //Set changes to local states
   const onChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  //Redirection
   if (redirectLink !== "") {
     return <Redirect to={redirectLink} />;
   }
+
   return (
     <div>
       <h1>Register</h1>

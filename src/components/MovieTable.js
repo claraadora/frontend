@@ -14,6 +14,7 @@ const MovieTable = () => {
   const year = useSelector((state) => state.selectedYear.year);
   const [movieDetails, setMovieDetails] = useState([]);
 
+  //Update table data when user changed the year selection
   useEffect(() => {
     const updateMovieDetails = async () => {
       const json = await fetchData(year);
@@ -21,8 +22,6 @@ const MovieTable = () => {
     };
     updateMovieDetails();
   }, [year]);
-
-  console.log(year);
 
   return (
     <table>

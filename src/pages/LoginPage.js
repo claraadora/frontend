@@ -9,17 +9,15 @@ export const LoginPage = () => {
     email: "",
     password: "",
   });
-
   const [redirectLink, setRedirectLink] = useState("");
 
-  //Redux
+  //To update store
   const dispatch = useDispatch();
   const updateStore = (user) => dispatch(login(user));
-  console.log("hello");
 
+  //Update store and redirection link upon submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(user);
     updateStore(user);
     setRedirectLink("/");
     alert(`logged in successfully!`);
@@ -29,6 +27,7 @@ export const LoginPage = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  //Redirect to home page
   if (redirectLink !== "") {
     return <Redirect to={redirectLink} />;
   }

@@ -5,12 +5,13 @@ import { selectYear } from "../actions/userActions";
 const MovieSelection = () => {
   const [year, setYear] = useState("");
 
-  //Redux
+  //To update store
   const dispatch = useDispatch();
   const updateStore = (year) => {
     return dispatch(selectYear(year));
   };
 
+  //Update store when selection is submitted
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(year);
@@ -20,6 +21,7 @@ const MovieSelection = () => {
   const onChange = (e) => {
     setYear(e.target.value);
   };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
