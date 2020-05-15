@@ -79,7 +79,7 @@ export function selectedYear(state = initialYearState, action) {
   }
 }
 
-export function redirect(state = {}, action) {
+export function redirectTo(state = {}, action) {
   switch (action.type) {
     case pageConstants.REDIRECT_TO:
       return {
@@ -103,5 +103,5 @@ export const rootReducer = combineReducers({
   loggedUser,
   selectedYear,
   registeredUser,
-  redirect,
+  redirectTo,
 });

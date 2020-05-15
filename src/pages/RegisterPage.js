@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { register } from "../actions/userActions";
 import { Redirect } from "react-router-dom";
+import { redirectTo } from "../actions/pageActions";
 
 export const RegisterPage = () => {
   //States
@@ -11,7 +12,9 @@ export const RegisterPage = () => {
     password: "",
     confirmedPassword: "",
   });
-  const redirectTo = useSelector((state) => state.redirectTo);
+
+  const [redirectLink, setRedirectLink] = useState("");
+  // const redirectLink = useSelector((state) => state.redirectTo);
 
   const validate = (values) => {
     if (values.password === values.confirmedPassword) {
@@ -55,7 +58,7 @@ export const RegisterPage = () => {
       updateRedirect("/login");
       alert(`registered successfully!`);
       clearFields();
-      return <Redirect to="/login" />;
+      setRedirectLink("/login");
     } else {
       alert("Passwords do not match!");
       clearErrors();
@@ -67,6 +70,9 @@ export const RegisterPage = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  if (redirectLink !== "") {
+    return <Redirect to={redirectLink} />;
+  }
   return (
     <div>
       <h1>Register</h1>

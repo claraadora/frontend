@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { login } from "../actions/userActions";
 
 export const LoginPage = () => {
@@ -9,6 +9,8 @@ export const LoginPage = () => {
     email: "",
     password: "",
   });
+
+  const [redirectLink, setRedirectLink] = useState("");
 
   //Redux
   const dispatch = useDispatch();
@@ -19,12 +21,17 @@ export const LoginPage = () => {
     e.preventDefault();
     console.log(user);
     updateStore(user);
+    setRedirectLink("/");
     alert(`logged in successfully!`);
   };
 
   const onChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
+
+  if (redirectLink !== "") {
+    return <Redirect to={redirectLink} />;
+  }
 
   return (
     <div>

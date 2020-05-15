@@ -1,6 +1,7 @@
 import React from "react";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
+import LogoutPage from "./pages/LogoutPage";
 import RegisterPage from "./pages/RegisterPage";
 import Nav from "./components/Nav";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -14,6 +15,7 @@ function App() {
         <Switch>
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/register" component={RegisterPage} />
+          <Route exact path="/logout" component={LogoutPage} />
           <Route exact path="/" component={LandingPage} />
         </Switch>
       </div>
