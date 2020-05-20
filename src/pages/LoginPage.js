@@ -1,69 +1,105 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
-import { login } from "../actions/userActions";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 
-export const LoginPage = () => {
-  //States
-  const [user, setUser] = useState({
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
+export default function LogInPage() {
+  const classes = useStyles();
+  const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const [redirectLink, setRedirectLink] = useState("");
+  const { email, password } = formData;
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  //To update store
-  const dispatch = useDispatch();
-  const updateStore = (user) => dispatch(login(user));
-
-  //Update store and redirection link upon submission
-  const handleSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    updateStore(user);
-    setRedirectLink("/");
-    alert(`logged in successfully!`);
+    console.log("SUCCESS");
   };
-
-  const onChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
-
-  //Redirect to home page
-  if (redirectLink !== "") {
-    return <Redirect to={redirectLink} />;
-  }
 
   return (
-    <div>
-      <h1>Log in</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">
-          <p>Email</p>
-        </label>
-        <input
-          type="email"
-          name="email"
-          onChange={onChange}
-          value={user.email}
-          placeholder="Enter email"
-        />
-        <label htmlFor="password">
-          <p>Password</p>
-        </label>
-        <input
-          type="password"
-          name="password"
-          onChange={onChange}
-          value={user.password}
-          placeholder="Enter password"
-        />
-        <br />
-        <br />
-        <input type="submit" value="Submit"></input>
-      </form>
-      <br></br>
-      Don't have an account? <Link to="/register">Register here</Link>
-    </div>
+    <Container component="main" maxWidth="xs">
+      <div className={classes.paper}>
+        <Typography component="h1" variant="h5">
+          Log In
+        </Typography>
+        <form className={classes.form} onSubmit={onSubmit}>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            onChange={onChange}
+            autoComplete="email"
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            onChange={onChange}
+            autoComplete="current-password"
+          />
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Log In
+          </Button>
+          <Grid container>
+            <Grid item>
+              <Link href="#" variant="body2">
+                {"Don't have an account? Sign Up"}
+              </Link>
+            </Grid>
+          </Grid>
+        </form>
+      </div>
+    </Container>
   );
-};
-
-export default LoginPage;
+}
